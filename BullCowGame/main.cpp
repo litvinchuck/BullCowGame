@@ -5,11 +5,8 @@
 using FText = FString;
 using int32 = int;
 
-constexpr int32 WORLD_LENGTH = 5;
-
 void PrintIntro();
 FText GetGuess();
-void PrintGuess(FText guess);
 void PlayGame();
 bool AskToPlayAgain();
 
@@ -25,14 +22,16 @@ int main() {
 }
 
 void PrintIntro() {
-	std::cout << "Welcome to Bulls and Cows, a fun letter game!" << std::endl;
-	std::cout << "Can you guess the " << WORLD_LENGTH << " letter isogram I'm thinking of?" << std::endl;
+	std::cout << "Welcome to Bulls and Cows, a fun letter game!\n";
+	std::cout << "Can you guess the " << BCGame.GetHiddenWordLenght();
+	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
 	return;
 }
 
 FText GetGuess() {
-	std::cout << "Try " << BCGame.GetCurrentTry() << ". Your guess: ";
+	std::cout << "Try " << BCGame.GetCurrentTry();
+	std::cout << ". Your guess: ";
 	FText Guess = "";
 	std::getline(std::cin, Guess);
 	return Guess;
