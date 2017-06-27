@@ -7,12 +7,12 @@ FBullCowGame::FBullCowGame()
 	Reset();
 }
 
-int FBullCowGame::GetMaxTries() const
+int32 FBullCowGame::GetMaxTries() const
 {
 	return MyMaxTries;
 }
 
-int FBullCowGame::GetCurrentTry() const
+int32 FBullCowGame::GetCurrentTry() const
 {
 	return MyCurrentTry;
 }
@@ -29,7 +29,7 @@ void FBullCowGame::Reset()
 	return;
 }
 
-bool FBullCowGame::CheckGuessValidity(std::string)
+bool FBullCowGame::CheckGuessValidity(FString)
 {
 	return false;
 }

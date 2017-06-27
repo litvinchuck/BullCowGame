@@ -2,11 +2,14 @@
 #include <string>
 #include "FBullCowGame.h"
 
-constexpr auto WORLD_LENGTH = 5;
+using FText = FString;
+using int32 = int;
+
+constexpr int32 WORLD_LENGTH = 5;
 
 void PrintIntro();
-std::string GetGuess();
-void PrintGuess(std::string guess);
+FText GetGuess();
+void PrintGuess(FText guess);
 void PlayGame();
 bool AskToPlayAgain();
 
@@ -28,22 +31,22 @@ void PrintIntro() {
 	return;
 }
 
-std::string GetGuess() {
+FText GetGuess() {
 	std::cout << "Try " << BCGame.GetCurrentTry() << ". Your guess: ";
-	std::string Guess = "";
+	FText Guess = "";
 	std::getline(std::cin, Guess);
 	return Guess;
 }
 
-void PrintGuess(std::string guess) {
+void PrintGuess(FText guess) {
 	std::cout << "Your guess was: " << guess << std::endl;
 	return;
 }
 
 void PlayGame() {
 	BCGame.Reset();
-	int MaxTries = BCGame.GetMaxTries();
-	for (int turn = 1; turn <= MaxTries; turn++) {
+	int32 MaxTries = BCGame.GetMaxTries();
+	for (int32 turn = 1; turn <= MaxTries; turn++) {
 		PrintGuess(GetGuess()); // make loop check valid guess
 		std::cout << std::endl;
 	}
@@ -55,7 +58,7 @@ void PlayGame() {
 
 bool AskToPlayAgain () {
 	std::cout << "Do you want to play again? (y/n) ";
-	std::string Response = "";
+	FText Response = "";
 	std::getline(std::cin, Response);
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
