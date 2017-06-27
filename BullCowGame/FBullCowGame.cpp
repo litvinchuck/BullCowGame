@@ -1,5 +1,8 @@
 #include "FBullCowGame.h"
 
+using FString = std::string;
+using int32 = int;
+
 constexpr auto MAX_TRIES = 8;
 
 FBullCowGame::FBullCowGame()

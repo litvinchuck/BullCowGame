@@ -38,8 +38,8 @@ FText GetGuess() {
 	return Guess;
 }
 
-void PrintGuess(FText guess) {
-	std::cout << "Your guess was: " << guess << std::endl;
+void PrintGuess(FText Guess) {
+	std::cout << "Your guess was: " << Guess << std::endl;
 	return;
 }
 
