@@ -38,16 +38,14 @@ FText GetGuess() {
 	return Guess;
 }
 
-void PrintGuess(FText Guess) {
-	std::cout << "Your guess was: " << Guess << std::endl;
-	return;
-}
-
 void PlayGame() {
 	BCGame.Reset();
 	int32 MaxTries = BCGame.GetMaxTries();
 	for (int32 turn = 1; turn <= MaxTries; turn++) {
-		PrintGuess(GetGuess()); // make loop check valid guess
+		FText Guess = GetGuess();
+		FBullCowCount BCCount = BCGame.SubmitGuess(Guess);
+		std::cout << "Bulls = " << BCCount.Bulls;
+		std::cout << ". Cows = " << BCCount.Cows;
 		std::cout << std::endl;
 	}
 

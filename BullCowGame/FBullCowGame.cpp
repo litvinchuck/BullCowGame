@@ -3,7 +3,8 @@
 using FString = std::string;
 using int32 = int;
 
-constexpr auto MAX_TRIES = 8;
+constexpr int32 MAX_TRIES = 8;
+const FString HIDDEN_WORD = "planet";
 
 FBullCowGame::FBullCowGame()
 {
@@ -29,10 +30,32 @@ void FBullCowGame::Reset()
 {
 	MyMaxTries = MAX_TRIES;
 	MyCurrentTry = 1;
+	MyHiddenWord = HIDDEN_WORD;
 	return;
 }
 
 bool FBullCowGame::CheckGuessValidity(FString)
 {
 	return false;
+}
+
+FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
+{
+	MyCurrentTry++;
+	FBullCowCount BCCount;
+	int32 HiddenWordLength = MyHiddenWord.length();
+	for (int32 i = 0; i < HiddenWordLength; i++) {
+		for (int32 j = 0; j < HiddenWordLength; j++) {
+			if ((i == j) && (MyHiddenWord[i] == Guess[j])) {
+				BCCount.Bulls++;
+			}
+			else if ((MyHiddenWord[i] == Guess[j])) {
+				BCCount.Cows++;
+			}
+			else {
+				continue;
+			}
+		}
+	}
+	return BCCount;
 }
