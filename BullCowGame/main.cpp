@@ -22,7 +22,7 @@ int main() {
 }
 
 void PrintIntro() {
-	std::cout << "Welcome to Bulls and Cows, a fun letter game!\n";
+	std::cout << "\n\nWelcome to Bulls and Cows, a fun letter game!\n";
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLenght();
 	std::cout << " letter isogram I'm thinking of?\n\n";
 	return;
@@ -60,7 +60,7 @@ void PlayGame() {
 	BCGame.Reset();
 
 	int32 MaxTries = BCGame.GetMaxTries();
-	for (int32 turn = 1; turn <= MaxTries; turn++) {
+	while(!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries) {
 		FText Guess = GetValidGuess();
 		FBullCowCount BCCount = BCGame.SubmitValidGuess(Guess);
 		std::cout << "Bulls = " << BCCount.Bulls;

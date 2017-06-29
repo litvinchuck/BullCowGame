@@ -28,7 +28,7 @@ int32 FBullCowGame::GetHiddenWordLenght() const
 
 bool FBullCowGame::IsGameWon() const
 {
-	return false;
+	return bWordGuessed;
 }
 
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
@@ -47,17 +47,22 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 	}
 }
 
+/*
+ * Resets the game to starting state
+ */
 void FBullCowGame::Reset()
 {
 	MyMaxTries = MAX_TRIES;
 	MyCurrentTry = 1;
 	MyHiddenWord = HIDDEN_WORD;
+	bWordGuessed = false;
 	return;
 }
 
 /*
  * Returns the number of bulls and cows in guessed word
  * Increments the current try
+ * Checks whether the word was guessed
  * Assumes the guess length is the same as hidden word length
  */
 FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
@@ -77,6 +82,9 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 				continue;
 			}
 		}
+	}
+	if (BCCount.Bulls == WordLength) {
+		bWordGuessed = true;
 	}
 	return BCCount;
 }
