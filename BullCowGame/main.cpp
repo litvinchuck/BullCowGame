@@ -9,6 +9,10 @@ void PrintIntro();
 FText GetValidGuess();
 void PlayGame();
 bool AskToPlayAgain();
+void PrintGameSummary();
+
+const FText WIN_MESSAGE = "You won!\n";
+const FText LOSE_MESSAGE = "Better luck next time!\n";
 
 FBullCowGame BCGame;
 
@@ -16,6 +20,7 @@ int main() {
 	do {
 		PrintIntro();
 		PlayGame();
+		PrintGameSummary();
 	} while (AskToPlayAgain());
 
 	return 0;
@@ -78,4 +83,13 @@ bool AskToPlayAgain () {
 	FText Response = "";
 	std::getline(std::cin, Response);
 	return (Response[0] == 'y') || (Response[0] == 'Y');
+}
+
+void PrintGameSummary() {
+	if (BCGame.IsGameWon()) {
+		std::cout << WIN_MESSAGE;
+	}
+	else {
+		std::cout << LOSE_MESSAGE;
+	}
 }
