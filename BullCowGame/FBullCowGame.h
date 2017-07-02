@@ -47,4 +47,5 @@ private:
 	bool bWordGuessed;
 
 	bool IsIsogram(FString) const;
+	bool IsLowercase(FString) const;
 };
