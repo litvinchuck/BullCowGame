@@ -45,4 +45,6 @@ private:
 	int32 MyCurrentTry;
 	FString MyHiddenWord;
 	bool bWordGuessed;
+
+	bool IsIsogram(FString) const;
 };

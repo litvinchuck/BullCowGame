@@ -1,9 +1,11 @@
 #include "FBullCowGame.h"
+#include <map>
+#define TMap std::map
 
 using FString = std::string;
 using int32 = int;
 
-constexpr int32 MAX_TRIES = 8;
+constexpr int32 MAX_TRIES = 3;
 const FString HIDDEN_WORD = "planet";
 
 FBullCowGame::FBullCowGame()
@@ -33,7 +35,7 @@ bool FBullCowGame::IsGameWon() const
 
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 {
-	if (false) {
+	if (!IsIsogram(Guess)) {
 		return EGuessStatus::Not_Isogram;
 	}
 	else if (false) {
@@ -87,4 +89,24 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 		bWordGuessed = true;
 	}
 	return BCCount;
+}
+
+/*
+ * Checks whether a word is an isogram (has no repeating letters in it)
+ */
+bool FBullCowGame::IsIsogram(FString Word) const {
+	if (Word.length() <= 1) {
+		return true;
+	}
+	TMap<char, bool> LetterSeen;
+	for (auto Letter : Word) {
+		Letter = tolower(Letter);
+		if (LetterSeen[Letter] == true) {
+			return false;
+		}
+		else {
+			LetterSeen[Letter] = true;
+		}
+	}
+	return true;
 }
