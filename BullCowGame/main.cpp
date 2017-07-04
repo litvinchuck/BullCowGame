@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "FBullCowGame.h"
+#include "cowsay.h"
 
-using FText = FString;
+using FText = std::string;
 using int32 = int;
 
 void PrintIntro();
@@ -27,9 +29,11 @@ int main() {
 }
 
 void PrintIntro() {
-	std::cout << "\n\nWelcome to Bulls and Cows, a fun letter game!\n";
-	std::cout << "Can you guess the " << BCGame.GetHiddenWordLenght();
-	std::cout << " letter isogram I'm thinking of?\n\n";
+	std::stringstream IntroText;
+	IntroText << "\n\nWelcome to Bulls and Cows, a fun letter game!\n" <<
+				 "Can you guess the " << BCGame.GetHiddenWordLenght() <<
+				 " letter isogram I'm thinking of?\n\n";
+	PrintCowSay(IntroText.str());
 	return;
 }
 
@@ -38,6 +42,7 @@ FText GetValidGuess() {
 	FText Guess = "";
 	do {
 		std::cout << "Try " << BCGame.GetCurrentTry();
+		std::cout << " of " << BCGame.GetMaxTries();
 		std::cout << ". Your guess: ";
 		std::getline(std::cin, Guess);
 
@@ -45,18 +50,17 @@ FText GetValidGuess() {
 		switch (Status)
 		{
 		case EGuessStatus::Not_Isogram:
-			std::cout << "Please enter a word without repeating letters.\n";
+			std::cout << "Please enter a word without repeating letters.\n\n";
 			break;
 		case EGuessStatus::Wrong_Length:
-			std::cout << "Please enter a " << BCGame.GetHiddenWordLenght() << " letter word.\n";
+			std::cout << "Please enter a " << BCGame.GetHiddenWordLenght() << " letter word.\n\n";
 			break;
 		case EGuessStatus::Not_Lowercase:
-			std::cout << "Please enter your guess in lowercase.\n";
+			std::cout << "Please enter your guess in lowercase.\n\n";
 			break;
 		default:
 			Status = EGuessStatus::OK;
 		}
-		std::cout << std::endl;
 	} while (Status != EGuessStatus::OK);
 	return Guess;
 }
@@ -73,7 +77,6 @@ void PlayGame() {
 	}
 
 	// TODO: summarize game
-	// TODO: cow say
 
 	return;
 }

@@ -21,9 +21,15 @@
     <ClCompile Include="FBullCowGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cowsay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FBullCowGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cowsay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
