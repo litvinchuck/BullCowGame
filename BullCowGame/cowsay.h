@@ -2,6 +2,14 @@
 #include <iostream>
 #include <string>
 
-using FString = std::string;
+using int32 = int;
+using FText = std::string;
 
-void PrintCowSay(FString);
+struct FTextMetrics {
+	int32 NumberOfLines = 0;
+	int32 MaxLineLength = 0;
+};
+
+void PrintCowSay(FText);
+FTextMetrics GetTextMetrics(FText);
+void PrintCowSpeechBubble(FText);
