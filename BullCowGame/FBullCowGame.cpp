@@ -6,7 +6,8 @@ using FString = std::string;
 using int32 = int;
 
 constexpr int32 MAX_TRIES = 3;
-const FString HIDDEN_WORD = "planet";
+const FString HIDDEN_WORD = "con";
+const int32 GUESS_PERCENTAGE = 30;
 
 FBullCowGame::FBullCowGame()
 {
@@ -15,7 +16,7 @@ FBullCowGame::FBullCowGame()
 
 int32 FBullCowGame::GetMaxTries() const
 {
-	return MyMaxTries;
+	return HIDDEN_WORD.length() + std::ceil((GUESS_PERCENTAGE / 100.0) * HIDDEN_WORD.length());
 }
 
 int32 FBullCowGame::GetCurrentTry() const
@@ -54,7 +55,6 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
  */
 void FBullCowGame::Reset()
 {
-	MyMaxTries = MAX_TRIES;
 	MyCurrentTry = 1;
 	MyHiddenWord = HIDDEN_WORD;
 	bWordGuessed = false;

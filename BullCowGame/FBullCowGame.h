@@ -41,7 +41,6 @@ public:
 	FBullCowCount SubmitValidGuess(FString);
 
 private:
-	int32 MyMaxTries;
 	int32 MyCurrentTry;
 	FString MyHiddenWord;
 	bool bWordGuessed;

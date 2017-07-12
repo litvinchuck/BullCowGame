@@ -15,6 +15,7 @@ void PrintCowSay(FText Text) {
 	std::cout << "\n\n";
 	PrintCowSpeechBubble(Text);
 	std::cout << Cow << '\n';
+	return;
 }
 
 FTextMetrics GetTextMetrics(FText Text) {
@@ -57,4 +58,5 @@ void PrintCowSpeechBubble(FText Text) {
 			LineIndex++;
 		}
 	}
+	return;
 }
