@@ -1,6 +1,13 @@
+/*
+ * Game logic
+ * The game is a simple guess word game
+ */
+
 #pragma once
+
 #include <string>
 
+// Make syntax Unreal friendly
 using FString = std::string;
 using int32 = int;
 
@@ -43,7 +50,7 @@ public:
 	bool IsGameWon() const;
 	EGuessStatus CheckGuessValidity(FString) const;
 
-	void Reset(); // TODO: make a more rich return value
+	void Reset();
 	FBullCowCount SubmitValidGuess(FString);
 
 private:

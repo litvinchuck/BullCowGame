@@ -1,9 +1,16 @@
+/*
+ * Game View
+ */
+
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <sstream>
 #include "FBullCowGame.h"
 #include "cowsay.h"
 
+// Make syntax Unreal friendly
 using FText = std::string;
 using int32 = int;
 
@@ -39,7 +46,7 @@ void PrintIntro() {
 }
 
 /*
- *Gets a guess from a user and checks its validity.
+ * Gets a guess from a user and checks its validity.
  */
 FText GetValidGuess() {
 	EGuessStatus Status= EGuessStatus::Invalid_Status;
@@ -69,6 +76,9 @@ FText GetValidGuess() {
 	return Guess;
 }
 
+/*
+ * Plays a single game to completion
+ */
 void PlayGame() {
 	int32 MaxTries = BCGame.GetMaxTries();
 	while(!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries) {
@@ -87,6 +97,9 @@ bool AskToPlayAgain () {
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
 
+/*
+ * Display whether game was won or not
+ */
 void PrintGameSummary() {
 	if (BCGame.IsGameWon()) {
 		std::cout << WIN_MESSAGE;

@@ -1,13 +1,17 @@
+#pragma once
+
 #include "FBullCowGame.h"
 #include <map>
 #include <time.h>
 #include <vector>
-#define TMap std::map
 
+// Make syntax Unreal friendly
+#define TMap std::map
 using FString = std::string;
 using int32 = int;
 
 constexpr int32 MAX_TRIES = 3;
+// Words must be isograms
 const std::vector<FString> HIDDEN_WORDS { "cow", "guy", "sky", "rum", "oil", "seal", "slew", "silk", "rage", "view", "bruno", "quart", "throb", "planet"};
 const int32 GUESS_PERCENTAGE = 30;
 

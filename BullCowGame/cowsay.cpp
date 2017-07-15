@@ -1,7 +1,10 @@
+#pragma once
+
 #include "cowsay.h"
 #include <string>
 #include <sstream>
 
+// Make syntax Unreal friendly
 using int32 = int;
 using FText = std::string;
 
@@ -42,7 +45,7 @@ FTextMetrics GetTextMetrics(FText Text) {
  * Returns unchanged String if Length is smaller or equalls to String length
  */
 FText FillStringToLength(FText String, int32 Length) {
-	if (String.length < Length) {
+	if (String.length() < Length) {
 		return String + FText(Length - String.length(), ' ');
 	}
 	else {
