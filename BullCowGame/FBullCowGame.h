@@ -14,7 +14,7 @@ struct FBullCowCount {
 };
 
 /*
- *Status of the checked word
+ * Status of the checked word
  */
 enum class EGuessStatus {
 	OK,
@@ -26,6 +26,11 @@ enum class EGuessStatus {
 
 /*
  * Game controller class
+ *
+ * Attributes:
+ *  int32 MyCurrentTry - players current try
+ *  FString MyHiddenWord - word that is being guessed
+ *  bool bWordGuessed - whether or not word was guessed
  */
 class FBullCowGame {
 public:

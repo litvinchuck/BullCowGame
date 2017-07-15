@@ -16,6 +16,9 @@ FBullCowGame::FBullCowGame()
 	Reset();
 }
 
+/*
+ * Computes the number of tries based on hidden word length
+ */
 int32 FBullCowGame::GetMaxTries() const
 {
 	return GetHiddenWordLenght() + std::ceil((GUESS_PERCENTAGE / 100.0) * GetHiddenWordLenght());
@@ -26,6 +29,9 @@ int32 FBullCowGame::GetCurrentTry() const
 	return MyCurrentTry;
 }
 
+/*
+ * Randomly chooses and returns a hidden word
+ */
 FString FBullCowGame::ChooseHiddenWord() const
 {
 	srand(time(NULL));
@@ -43,6 +49,10 @@ bool FBullCowGame::IsGameWon() const
 	return bWordGuessed;
 }
 
+/*
+ * Checks whether submitted guess is valid, whether guess is an isogram,
+ * whether guess is lowercase, whether guess is the same length as hidden word.
+ */
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 {
 	if (!IsIsogram(Guess)) {

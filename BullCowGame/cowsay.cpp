@@ -18,6 +18,9 @@ void PrintCowSay(FText Text) {
 	return;
 }
 
+/*
+ * Computes the number of lines and maximum line length in a given String
+ */
 FTextMetrics GetTextMetrics(FText Text) {
 	FText Line;
 	std::istringstream Stream(Text);
@@ -34,8 +37,17 @@ FTextMetrics GetTextMetrics(FText Text) {
 	return TextMetrics;
 }
 
+/*
+ * Completes the String empty space untill its meets the given Length
+ * Returns unchanged String if Length is smaller or equalls to String length
+ */
 FText FillStringToLength(FText String, int32 Length) {
-	return String + FText(Length - String.length(), ' ');
+	if (String.length < Length) {
+		return String + FText(Length - String.length(), ' ');
+	}
+	else {
+		return String;
+	}
 }
 
 void PrintCowSpeechBubble(FText Text) {
