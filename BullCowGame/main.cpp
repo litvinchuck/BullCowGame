@@ -20,6 +20,7 @@ FBullCowGame BCGame;
 
 int main() {
 	do {
+		BCGame.Reset();
 		PrintIntro();
 		PlayGame();
 		PrintGameSummary();
@@ -37,6 +38,9 @@ void PrintIntro() {
 	return;
 }
 
+/*
+ *Gets a guess from a user and checks its validity.
+ */
 FText GetValidGuess() {
 	EGuessStatus Status= EGuessStatus::Invalid_Status;
 	FText Guess = "";
@@ -66,8 +70,6 @@ FText GetValidGuess() {
 }
 
 void PlayGame() {
-	BCGame.Reset();
-
 	int32 MaxTries = BCGame.GetMaxTries();
 	while(!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries) {
 		FText Guess = GetValidGuess();
@@ -75,9 +77,6 @@ void PlayGame() {
 		std::cout << "Bulls = " << BCCount.Bulls;
 		std::cout << ". Cows = " << BCCount.Cows << "\n\n";
 	}
-
-	// TODO: summarize game
-
 	return;
 }
 

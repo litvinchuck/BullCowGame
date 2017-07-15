@@ -1,12 +1,14 @@
 #include "FBullCowGame.h"
 #include <map>
+#include <time.h>
+#include <vector>
 #define TMap std::map
 
 using FString = std::string;
 using int32 = int;
 
 constexpr int32 MAX_TRIES = 3;
-const FString HIDDEN_WORD = "con";
+const std::vector<FString> HIDDEN_WORDS { "cow", "guy", "sky", "rum", "oil", "seal", "slew", "silk", "rage", "view", "bruno", "quart", "throb", "planet"};
 const int32 GUESS_PERCENTAGE = 30;
 
 FBullCowGame::FBullCowGame()
@@ -16,12 +18,19 @@ FBullCowGame::FBullCowGame()
 
 int32 FBullCowGame::GetMaxTries() const
 {
-	return HIDDEN_WORD.length() + std::ceil((GUESS_PERCENTAGE / 100.0) * HIDDEN_WORD.length());
+	return GetHiddenWordLenght() + std::ceil((GUESS_PERCENTAGE / 100.0) * GetHiddenWordLenght());
 }
 
 int32 FBullCowGame::GetCurrentTry() const
 {
 	return MyCurrentTry;
+}
+
+FString FBullCowGame::ChooseHiddenWord() const
+{
+	srand(time(NULL));
+	int32 index = HIDDEN_WORDS.size();
+	return HIDDEN_WORDS[rand() % HIDDEN_WORDS.size()];
 }
 
 int32 FBullCowGame::GetHiddenWordLenght() const
@@ -56,7 +65,7 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 void FBullCowGame::Reset()
 {
 	MyCurrentTry = 1;
-	MyHiddenWord = HIDDEN_WORD;
+	MyHiddenWord = ChooseHiddenWord();
 	bWordGuessed = false;
 	return;
 }
